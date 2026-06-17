@@ -26,6 +26,21 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [message, setmessage] = useState("");
 
+  async function sendContactEmail() {
+    const response = await fetch("/api/send-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email,
+        message,
+      }),
+    });
+
+    if (!response.ok) {
+      const body = await response.json().catch(() => ({}));
+      throw new Error(body.error ?? "Erro ao enviar mensagem.");
+    }
+  }
   useEffect(() => {
     const html = document.querySelector("html");
     if (html) {
@@ -320,6 +335,7 @@ export default function Home() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
+            sendContactEmail();
           }}
         >
           <label>
@@ -372,9 +388,9 @@ export default function Home() {
           <div className="footer-contact">
             <h4>Contato</h4>
 
-            <p>📱 WhatsApp: (45) 99999-9999</p>
-            <p>📍 Cascavel - PR</p>
-            <p>✉️ contato@bolachasdanona.com.br</p>
+            <p>WhatsApp: (45) 99999-9999</p>
+            <p>Cascavel - PR</p>
+            <p>contato@bolachasdanona.com.br</p>
           </div>
         </div>
 
