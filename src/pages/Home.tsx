@@ -24,9 +24,11 @@ import "../styles/footer.css";
 export default function Home() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [email, setEmail] = useState("");
-  const [message, setmessage] = useState("");
+  const [message, setMessage] = useState("");
 
   async function sendContactEmail() {
+    setEmail("");
+    setMessage("");
     const response = await fetch("/api/send-email", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -52,7 +54,7 @@ export default function Home() {
     <>
       <header className="container py-sm">
         <nav className="flex items-center justify-between">
-          <img src={Logo} alt="Logo DonaFrost" width={220} height={80} />
+          <img src={Logo} alt="Logo Bolachas da nona" height={60} />
           <div className="desktop-only">
             <ul className="flex gap-1">
               <li>
@@ -355,7 +357,7 @@ export default function Home() {
               placeholder="Como podemos ajudar?"
               value={message}
               onChange={(e) => {
-                setmessage(e.target.value);
+                setMessage(e.target.value);
               }}
             />
           </label>
