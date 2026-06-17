@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Logo from "../assets/logo.svg";
+import Logo from "../assets/images/logo.png";
 import Menu from "../assets/menu.svg";
 import Close from "../assets/close.svg";
 import "../styles/header.css";
@@ -396,7 +396,7 @@ export default function Home() {
 
         <div className="footer-bottom">
           <p>
-            © {new Date().getFullYear()} Bolachas da Nona. Feito com ❤️ e muito
+            © {new Date().getFullYear()} Bolachas da Nona. Feito com muito
             carinho.
           </p>
         </div>
