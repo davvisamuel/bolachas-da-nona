@@ -54,7 +54,7 @@ export default function Home() {
     <>
       <header className="container py-sm">
         <nav className="flex items-center justify-between">
-          <img src={Logo} alt="Logo Bolachas da nona" height={60} />
+          <img src={Logo} alt="Logo Bolachas da nona" />
           <div className="desktop-only">
             <ul className="flex gap-1">
               <li>
