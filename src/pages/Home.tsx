@@ -27,8 +27,8 @@ export default function Home() {
   const [message, setMessage] = useState("");
 
   async function sendContactEmail() {
-    setEmail("");
-    setMessage("");
+    if (!email || !message) return;
+
     const response = await fetch("/api/send-email", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -42,6 +42,9 @@ export default function Home() {
       const body = await response.json().catch(() => ({}));
       throw new Error(body.error ?? "Erro ao enviar mensagem.");
     }
+
+    setEmail("");
+    setMessage("");
   }
   useEffect(() => {
     const html = document.querySelector("html");
